@@ -1,0 +1,10 @@
+*.py.orig
+*.pyc
+*.swp
+/.idea/*
+/.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+*.html
+iterate.dat
+*.m~
+.DS_Store
