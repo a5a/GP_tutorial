@@ -6,9 +6,9 @@
 # #Gaussian Processes Tutorial
 # ####Ahsan S. Alvi, Elmarie van Heerden
 # 
-# This tutorial makes use of the Gaussian Processes framework GPy  (https://github.com/SheffieldML/GPy)
+# Clone this tutorial with the following command: "git clone https://github.com/a5a/GP_tutorial.git" (without the quotation marks)
 # 
-# If you don't have this installed yet, follow one of the following installation instructions:
+# This tutorial makes use of the Gaussian Processes framework GPy  (https://github.com/SheffieldML/GPy). If you don't have this installed yet, follow one of the following installation instructions:
 # 
 # A. Github (preferred)
 #   1. In a terminal, change to the directory where you want to store the library's files
