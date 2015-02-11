@@ -284,12 +284,37 @@ plt.title('Optimized GP regression model fit')
 # <markdowncell>
 
 # Try changing the true kernel (k_data), the model kernel (k) and its initial parameters. You will find that the choice of kernel type may influence the predictions significantly, so it is important to choose a suitable kernel.
+# 
+# ###Visualising the optimisation
+# Let's plot the likelihood surface. This is a good way to track down irregularities between the optimiser and your own expectations, but only if the hyperparameter vector is small. We will look at the relationship between the log marginal likelihood (which is the optimiser's cost function) and the two kernel parameters. Note that such grid search quickly becomes infeasible even with medium-sized datasets and more than a couple of kernels.
+# 
+# In this example the likelihood surface exhibits a maximum (dark red area) close to the point(lengthscale, variance) = (3, 1), which confirms the optimiser's output.
+
+# <codecell>
+
+variances = np.linspace(0.5, 8., 20)
+lengthscales = np.linspace(1., 9., 20)
+log_likelihoods = np.zeros((len(variances), len(lengthscales)))
+
+# m['Gaussian_noise.variance'] = 0.04
+for ii in xrange(len(variances)):
+    for jj in xrange(len(lengthscales)):
+        m['Mat32.variance'] = variances[ii]
+        m['Mat32.lengthscale'] = lengthscales[jj]
+#         print m
+        log_likelihoods[ii, jj] = m.log_likelihood()
+        
+plt.imshow(log_likelihoods, 
+           extent=[min(lengthscales),max(lengthscales),min(variances),max(variances)], 
+           aspect=1, 
+           origin='lower')
+plt.colorbar()
 
 # <markdowncell>
 
-# ### A 2D example
+# ### Higher-dimensional inputs
 # 
-# Our data is comprised of the sum of a sinusoid in x and a sinusoid in y.
+# Gaussian Processes are not limited to single-dimensional inputs. Here is an example where our data is comprised of the sum of a sinusoid in x and a sinusoid in y.
 
 # <codecell>
 
